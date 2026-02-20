@@ -1,27 +1,35 @@
 (function () {
   var params = new URLSearchParams(window.location.search);
-  var id = params.get('id');
+  var id = (params.get('id') || '').toLowerCase().trim();
 
   var sellerInfo = document.getElementById('sellerInfo');
   var sellerFallback = document.getElementById('sellerFallback');
 
   function showFallback() {
-    sellerFallback.classList.remove('hidden');
+    sellerFallback.style.display = 'block';
   }
 
   function showSeller(seller) {
     document.getElementById('sellerName').textContent = seller.name;
 
-    var phoneEl = document.getElementById('sellerPhone');
-    phoneEl.textContent = seller.phone;
-    phoneEl.href = 'tel:' + seller.phone.replace(/\s/g, '');
+    var rawPhone = seller.phone;
+    var telPhone = rawPhone.replace(/\s/g, '');
 
-    var emailEl = document.getElementById('sellerEmail');
-    emailEl.textContent = seller.email;
-    emailEl.href = 'mailto:' + seller.email;
+    var phoneSpan = document.getElementById('sellerPhone');
+    phoneSpan.textContent = rawPhone;
 
-    sellerInfo.classList.remove('hidden');
+    var phoneLink = document.getElementById('sellerPhoneLink');
+    phoneLink.href = 'tel:' + telPhone;
 
+    var emailSpan = document.getElementById('sellerEmail');
+    emailSpan.textContent = seller.email;
+
+    var emailLink = document.getElementById('sellerEmailLink');
+    emailLink.href = 'mailto:' + seller.email;
+
+    sellerInfo.style.display = 'block';
+
+    // Generate QR code pointing to current URL (includes ?id=)
     new QRCode(document.getElementById('qrcode'), {
       text: window.location.href,
       width: 120,
@@ -39,11 +47,11 @@
 
   fetch('sellers.json')
     .then(function (res) {
-      if (!res.ok) throw new Error('Failed to load sellers');
+      if (!res.ok) throw new Error('Network response was not ok');
       return res.json();
     })
     .then(function (sellers) {
-      var seller = sellers[id.toLowerCase()];
+      var seller = sellers[id];
       if (seller) {
         showSeller(seller);
       } else {
