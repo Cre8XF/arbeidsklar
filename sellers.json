@@ -1,0 +1,12 @@
+{
+  "roger": {
+    "name": "Roger Sørqvist",
+    "phone": "900 00 000",
+    "email": "roger@tools.no"
+  },
+  "ola": {
+    "name": "Ola Hansen",
+    "phone": "901 23 456",
+    "email": "ola.hansen@tools.no"
+  }
+}
