@@ -1,668 +1,97 @@
 <!DOCTYPE html>
-<html lang="nb">
+<html lang="no">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Arbeidsklar – TOOLS Norge</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-  <style>
-    /* ─── Base ─────────────────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TOOLS Arbeidsklar</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<style>
+@media print {
+  body { background: white; }
+  .no-print { display: none !important; }
+  .page { box-shadow: none; margin: 0; }
+}
+body {
+  background: #f1f5f9;
+}
+</style>
 
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
-      font-size: 16px;
-      line-height: 1.6;
-      color: #0F172A;
-      background: #fff;
-      overflow-x: hidden;
-    }
-
-    /* ─── Layout helpers ───────────────────────────────────── */
-    .container {
-      width: 100%;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    section { width: 100%; }
-
-    /* ─── 1. HERO ──────────────────────────────────────────── */
-    .hero {
-      background-color: #E3000B;
-      color: #fff;
-      text-align: center;
-      padding: 56px 24px 64px;
-      min-height: 200px;
-      position: relative;
-    }
-
-    .hero-label {
-      position: absolute;
-      top: 20px;
-      left: 24px;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      opacity: 0.85;
-    }
-
-    .hero h1 {
-      font-size: clamp(56px, 12vw, 100px);
-      font-weight: 900;
-      letter-spacing: -0.02em;
-      line-height: 1;
-      margin: 0 0 20px;
-    }
-
-    .hero-sub {
-      font-size: clamp(18px, 3vw, 24px);
-      font-weight: 700;
-      margin: 0 0 12px;
-    }
-
-    .hero-tag {
-      font-size: clamp(14px, 2vw, 17px);
-      font-weight: 400;
-      color: rgba(255,255,255,0.80);
-      max-width: 560px;
-      margin: 0 auto;
-    }
-
-    /* ─── 2. PROBLEM ───────────────────────────────────────── */
-    .problem {
-      background: #fff;
-      padding: 64px 24px;
-    }
-
-    .problem-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      align-items: start;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .problem h2 {
-      font-size: clamp(22px, 3vw, 28px);
-      font-weight: 800;
-      margin: 0 0 28px;
-    }
-
-    .pain-list {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .pain-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      font-size: 16px;
-      line-height: 1.5;
-    }
-
-    .pain-x {
-      flex-shrink: 0;
-      color: #E3000B;
-      font-weight: 900;
-      font-size: 20px;
-      line-height: 1.4;
-    }
-
-    .solution-card {
-      background: #0F172A;
-      color: #fff;
-      border-radius: 16px;
-      padding: 40px 36px;
-    }
-
-    .solution-label {
-      display: inline-block;
-      background: #E3000B;
-      color: #fff;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 4px 10px;
-      border-radius: 4px;
-      margin-bottom: 24px;
-    }
-
-    .solution-card p {
-      font-size: clamp(20px, 2.5vw, 26px);
-      font-weight: 800;
-      line-height: 1.4;
-      margin: 0;
-    }
-
-    /* ─── 3. CONSISTENCY ───────────────────────────────────── */
-    .consistency {
-      background: #F1F5F9;
-      padding: 64px 24px;
-      text-align: center;
-    }
-
-    .consistency h2 {
-      font-size: clamp(24px, 4vw, 38px);
-      font-weight: 900;
-      letter-spacing: -0.01em;
-      margin: 0 0 16px;
-    }
-
-    .consistency-sub {
-      font-size: 16px;
-      color: #64748B;
-      max-width: 560px;
-      margin: 0 auto 36px;
-    }
-
-    .badges {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px;
-    }
-
-    .badge {
-      border: 2px solid #0F172A;
-      border-radius: 999px;
-      padding: 10px 24px;
-      font-size: 16px;
-      font-weight: 700;
-      background: #fff;
-      white-space: nowrap;
-    }
-
-    /* ─── 4. DIGITAL + PERSONAL ────────────────────────────── */
-    .dp {
-      background: #fff;
-      padding: 64px 24px;
-    }
-
-    .dp-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .dp-col {
-      padding-top: 16px;
-      border-top: 4px solid #E3000B;
-    }
-
-    .dp-col h3 {
-      font-size: clamp(18px, 2.5vw, 22px);
-      font-weight: 900;
-      letter-spacing: 0.02em;
-      margin: 16px 0 12px;
-    }
-
-    .dp-col p {
-      font-size: 16px;
-      color: #64748B;
-      margin: 0;
-      line-height: 1.7;
-    }
-
-    /* ─── 5. RESULTS ───────────────────────────────────────── */
-    .results {
-      background: #0F172A;
-      color: #fff;
-      padding: 64px 24px;
-    }
-
-    .results h2 {
-      font-size: clamp(24px, 4vw, 36px);
-      font-weight: 900;
-      text-align: center;
-      margin: 0 0 48px;
-      letter-spacing: -0.01em;
-    }
-
-    .results-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .result-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      font-size: 16px;
-      line-height: 1.5;
-    }
-
-    .check {
-      flex-shrink: 0;
-      color: #4ADE80;
-      font-size: 20px;
-      line-height: 1.4;
-    }
-
-    /* ─── 6. CTA ────────────────────────────────────────────── */
-    .cta {
-      background: #E3000B;
-      color: #fff;
-      text-align: center;
-      padding: 64px 24px;
-    }
-
-    .cta h2 {
-      font-size: clamp(24px, 4vw, 38px);
-      font-weight: 900;
-      letter-spacing: -0.01em;
-      line-height: 1.2;
-      margin: 0 0 16px;
-    }
-
-    .cta-sub {
-      font-size: 16px;
-      color: rgba(255,255,255,0.80);
-      max-width: 540px;
-      margin: 0 auto 36px;
-    }
-
-    .cta-badges {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px;
-    }
-
-    .cta-badge {
-      background: rgba(255,255,255,0.15);
-      border: 2px solid rgba(255,255,255,0.50);
-      color: #fff;
-      font-weight: 700;
-      font-size: 15px;
-      border-radius: 999px;
-      padding: 10px 22px;
-    }
-
-    /* ─── 7. SELLER CONTACT ─────────────────────────────────── */
-    .seller {
-      background: #fff;
-      padding: 56px 24px;
-      border-top: 2px solid #E2E8F0;
-    }
-
-    .seller-inner {
-      max-width: 720px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .seller-heading {
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #64748B;
-      margin: 0 0 32px;
-    }
-
-    .seller-layout {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 48px;
-    }
-
-    .seller-details {
-      text-align: left;
-    }
-
-    #sellerName {
-      font-size: clamp(22px, 4vw, 30px);
-      font-weight: 900;
-      color: #0F172A;
-      margin: 0 0 16px;
-    }
-
-    .seller-contact-line {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 16px;
-      color: #0F172A;
-      margin-bottom: 10px;
-      text-decoration: none;
-    }
-
-    .seller-contact-line:hover { text-decoration: underline; }
-
-    .seller-contact-line .icon {
-      font-size: 18px;
-      flex-shrink: 0;
-    }
-
-    .seller-qr {
-      flex-shrink: 0;
-      text-align: center;
-    }
-
-    .seller-qr-label {
-      font-size: 11px;
-      color: #94A3B8;
-      margin-top: 8px;
-    }
-
-    .seller-fallback {
-      font-size: 18px;
-      color: #64748B;
-      font-weight: 500;
-    }
-
-    /* ─── 8. FOOTER ─────────────────────────────────────────── */
-    .footer {
-      background: #F8FAFC;
-      border-top: 1px solid #E2E8F0;
-      padding: 32px 24px;
-      text-align: center;
-    }
-
-    .footer p {
-      font-size: 13px;
-      color: #94A3B8;
-      margin: 0 0 16px;
-    }
-
-    .print-btn {
-      display: inline-block;
-      background: #0F172A;
-      color: #fff;
-      font-size: 15px;
-      font-weight: 700;
-      padding: 14px 32px;
-      border-radius: 10px;
-      border: none;
-      cursor: pointer;
-      min-height: 44px;
-      transition: background 0.15s;
-    }
-
-    .print-btn:hover { background: #E3000B; }
-
-    /* ─── Responsive: mobile ─────────────────────────────────── */
-    @media (max-width: 767px) {
-      .hero { min-height: 180px; padding: 64px 20px 52px; }
-
-      .problem-grid { grid-template-columns: 1fr; gap: 32px; }
-
-      .dp-grid { grid-template-columns: 1fr; gap: 32px; }
-
-      .results-grid { grid-template-columns: 1fr; gap: 16px; }
-
-      .seller-layout {
-        flex-direction: column;
-        align-items: center;
-        gap: 28px;
-      }
-
-      .seller-details { text-align: center; }
-
-      .seller-contact-line { justify-content: center; }
-    }
-
-    /* ─── PRINT / PDF ────────────────────────────────────────── */
-    @media print {
-      @page {
-        size: A4;
-        margin: 15mm;
-      }
-
-      /* Force correct color rendering */
-      * {
-        -webkit-print-color-adjust: exact !important;
-        print-color-adjust: exact !important;
-        color-adjust: exact !important;
-        word-spacing: normal !important;
-        letter-spacing: normal !important;
-      }
-
-      body {
-        background: #fff !important;
-        font-size: 13px;
-        overflow: visible !important;
-      }
-
-      /* Hide print button only */
-      .no-print { display: none !important; }
-
-      /* All sections visible */
-      section, .hero, .problem, .consistency, .dp, .results, .cta, .seller, .footer {
-        display: block !important;
-        visibility: visible !important;
-        overflow: visible !important;
-      }
-
-      /* Avoid breaking inside sections */
-      section { page-break-inside: avoid; break-inside: avoid; }
-
-      /* Hero: force red background */
-      .hero {
-        background-color: #E3000B !important;
-        color: #fff !important;
-        min-height: 0 !important;
-        padding: 32px 24px !important;
-      }
-
-      .hero h1, .hero-sub, .hero-tag, .hero-label { color: #fff !important; }
-
-      /* Results: force dark background */
-      .results {
-        background-color: #0F172A !important;
-        color: #fff !important;
-      }
-
-      .result-item { color: #fff !important; }
-
-      /* CTA: force red */
-      .cta {
-        background-color: #E3000B !important;
-        color: #fff !important;
-      }
-
-      .cta h2, .cta-sub { color: #fff !important; }
-
-      /* Solution card: force dark */
-      .solution-card {
-        background-color: #0F172A !important;
-        color: #fff !important;
-      }
-
-      /* Seller section: always visible */
-      .seller, #sellerInfo, #sellerFallback { display: block !important; }
-
-      /* QR code visible */
-      #qrcode, #qrcode canvas, #qrcode img {
-        display: block !important;
-        visibility: visible !important;
-      }
-
-      .seller-layout {
-        display: flex !important;
-        flex-direction: row !important;
-        align-items: center !important;
-      }
-
-      /* Badges visible */
-      .badge, .cta-badge { border: 2px solid #0F172A !important; }
-
-      .footer { page-break-inside: avoid; break-inside: avoid; }
-    }
-  </style>
 </head>
-<body>
+<body class="text-slate-800">
 
-  <!-- ═══ 1. HERO ═══════════════════════════════════════════ -->
-  <section class="hero">
-    <span class="hero-label">TOOLS NORGE AS</span>
-    <h1>ARBEIDSKLAR</h1>
-    <p class="hero-sub">Arbeidstøy, vern og verktøy — satt i system.</p>
-    <p class="hero-tag">For deg som vil ha flyt i hverdagen og full kontroll på kostnadene.</p>
-  </section>
+<div class="page max-w-[900px] mx-auto bg-white my-10">
 
-  <!-- ═══ 2. PROBLEM ════════════════════════════════════════ -->
-  <section class="problem">
-    <div class="problem-grid">
-      <!-- Left -->
-      <div>
-        <h2>Kjenner du deg igjen?</h2>
-        <ul class="pain-list">
-          <li>
-            <span class="pain-x" aria-hidden="true">✕</span>
-            <span>Ulik praksis mellom butikker og avdelinger</span>
-          </li>
-          <li>
-            <span class="pain-x" aria-hidden="true">✕</span>
-            <span>Feilkjøp og avvik fra avtale</span>
-          </li>
-          <li>
-            <span class="pain-x" aria-hidden="true">✕</span>
-            <span>Manglende oversikt over sortiment og priser</span>
-          </li>
-          <li>
-            <span class="pain-x" aria-hidden="true">✕</span>
-            <span>Produksjon stopper fordi riktig utstyr mangler</span>
-          </li>
-        </ul>
-      </div>
-      <!-- Right -->
-      <div class="solution-card">
-        <span class="solution-label">LØSNINGEN</span>
-        <p>Én avtale.<br>Én struktur.<br>Én leverandør som tar ansvar.</p>
-      </div>
-    </div>
-  </section>
+    <!-- HERO -->
+    <section class="bg-red-600 text-white px-12 py-10 text-center">
+        <h1 class="text-4xl font-black tracking-tight">ARBEIDSKLAR</h1>
+        <p class="mt-3 text-lg">Arbeidstøy, vern og verktøy satt i system.</p>
+    </section>
 
-  <!-- ═══ 3. CONSISTENCY ════════════════════════════════════ -->
-  <section class="consistency">
-    <div class="container">
-      <h2>SAMME OPPLEVELSE OVERALT</h2>
-      <p class="consistency-sub">
-        Uansett hvilken butikk eller kontaktpunkt dere bruker — samme hjelp, samme løsning.
-      </p>
-      <div class="badges">
-        <span class="badge">👉 Trygt</span>
-        <span class="badge">👉 Forutsigbart</span>
-        <span class="badge">👉 Effektivt</span>
-      </div>
-    </div>
-  </section>
+    <!-- PROBLEM + SOLUTION -->
+    <section class="px-12 py-10 grid md:grid-cols-2 gap-10">
 
-  <!-- ═══ 4. DIGITAL + PERSONAL ════════════════════════════ -->
-  <section class="dp">
-    <div class="dp-grid">
-      <div class="dp-col">
-        <h3>DIGITAL KONTROLL</h3>
-        <p>Bestill enkelt på nett med full oversikt over sortiment og avtalevarer.</p>
-      </div>
-      <div class="dp-col">
-        <h3>PERSONLIG OPPFØLGING</h3>
-        <p>Dere har alltid tilgang på folk som kjenner dere og behovene deres.</p>
-      </div>
-    </div>
-  </section>
+        <div>
+            <h2 class="text-2xl font-bold mb-4">Kjenner du deg igjen?</h2>
+            <ul class="space-y-3 text-base">
+                <li class="flex gap-3"><span class="text-red-600 font-bold">✕</span> Ulik praksis i butikk</li>
+                <li class="flex gap-3"><span class="text-red-600 font-bold">✕</span> Feilkjøp og avvik</li>
+                <li class="flex gap-3"><span class="text-red-600 font-bold">✕</span> Manglende oversikt over avtale og priser</li>
+                <li class="flex gap-3"><span class="text-red-600 font-bold">✕</span> Produksjon stopper fordi riktig utstyr mangler</li>
+            </ul>
 
-  <!-- ═══ 5. RESULTS ════════════════════════════════════════ -->
-  <section class="results">
-    <div class="container">
-      <h2>RESULTATET I PRAKSIS</h2>
-      <div class="results-grid">
-        <div class="result-item">
-          <span class="check" aria-hidden="true">✔</span>
-          <span>Avtalte priser blir fulgt</span>
+            <div class="mt-6 bg-red-50 border-l-4 border-red-600 p-3 font-bold text-red-600">
+                👉 Det koster mer enn du tror.
+            </div>
         </div>
-        <div class="result-item">
-          <span class="check" aria-hidden="true">✔</span>
-          <span>Ingen avvik</span>
-        </div>
-        <div class="result-item">
-          <span class="check" aria-hidden="true">✔</span>
-          <span>Mindre feilkjøp og svinn</span>
-        </div>
-        <div class="result-item">
-          <span class="check" aria-hidden="true">✔</span>
-          <span>Bedre HMS og riktig utstyr til rett tid</span>
-        </div>
-        <div class="result-item">
-          <span class="check" aria-hidden="true">✔</span>
-          <span>Raskere innkjøp og enklere hverdag</span>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- ═══ 6. CTA ════════════════════════════════════════════ -->
-  <section class="cta">
-    <h2>ÉN AVTALE. ETT SYSTEM. FULL KONTROLL.</h2>
-    <p class="cta-sub">
-      Arbeidsklar er laget for deg som vil ha flyt i hverdagen og kontroll på kostnadene.
-    </p>
-    <div class="cta-badges">
-      <span class="cta-badge">👉 Mindre kaos</span>
-      <span class="cta-badge">👉 Mer kontroll</span>
-      <span class="cta-badge">👉 Bedre drift</span>
-    </div>
-  </section>
+        <div class="bg-slate-900 text-white p-8 rounded-xl flex items-center">
+            <div>
+                <p class="uppercase text-xs text-red-500 font-bold tracking-widest">Løsningen</p>
+                <h3 class="text-xl font-bold mt-2 leading-snug">
+                    Én avtale. Én struktur. Én leverandør som tar ansvar.
+                </h3>
+            </div>
+        </div>
 
-  <!-- ═══ 7. SELLER CONTACT ══════════════════════════════════ -->
-  <section class="seller">
-    <div class="seller-inner">
-      <p class="seller-heading">Din TOOLS-representant</p>
+    </section>
 
-      <!-- Populated by script.js -->
-      <div id="sellerInfo" style="display:none;">
-        <div class="seller-layout">
-          <div class="seller-details">
-            <p id="sellerName"></p>
-            <a id="sellerPhoneLink" href="#" class="seller-contact-line">
-              <span class="icon">📞</span>
-              <span id="sellerPhone"></span>
-            </a>
-            <a id="sellerEmailLink" href="#" class="seller-contact-line">
-              <span class="icon">✉</span>
-              <span id="sellerEmail"></span>
-            </a>
-          </div>
-          <div class="seller-qr">
+    <!-- BENEFITS -->
+    <section class="bg-slate-50 px-12 py-10 grid grid-cols-2 md:grid-cols-4 gap-6 text-center text-sm font-semibold">
+        <div class="bg-white p-4 border border-slate-200">✔ Mindre feilkjøp</div>
+        <div class="bg-white p-4 border border-slate-200">✔ Bedre HMS</div>
+        <div class="bg-white p-4 border border-slate-200">✔ Raskere håndtering</div>
+        <div class="bg-white p-4 border border-slate-200">✔ Enklere hverdag</div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-red-600 text-white px-12 py-10 text-center">
+        <h2 class="text-2xl font-black">ÉN AVTALE. ETT SYSTEM. FULL KONTROLL.</h2>
+        <p class="mt-3 text-base">La oss vise deg hvordan dette kan fungere hos dere.</p>
+
+        <div class="mt-6">
+            <h3 id="sellerName" class="text-xl font-bold"></h3>
+            <p id="sellerPhone"></p>
+            <p id="sellerEmail"></p>
+        </div>
+
+        <div class="mt-6 flex justify-center">
             <div id="qrcode"></div>
-            <p class="seller-qr-label">Skann for å åpne</p>
-          </div>
         </div>
-      </div>
+    </section>
 
-      <p id="sellerFallback" style="display:none;" class="seller-fallback">
-        Ta kontakt med din lokale TOOLS-representant
-      </p>
-    </div>
-  </section>
+</div>
 
-  <!-- ═══ 8. FOOTER ═════════════════════════════════════════ -->
-  <footer class="footer">
-    <p>&copy; TOOLS Norge AS — Alle rettigheter forbeholdt</p>
-    <button class="print-btn no-print" onclick="window.print()">
-      Last ned som PDF
+<!-- PDF BUTTON -->
+<div class="text-center my-6 no-print">
+    <button onclick="window.print()" class="bg-slate-900 text-white px-6 py-3 rounded font-bold">
+        Last ned som PDF
     </button>
-  </footer>
+</div>
 
-  <script src="script.js"></script>
+<script src="script.js"></script>
+
 </body>
 </html>
