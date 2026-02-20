@@ -1,0 +1,127 @@
+@page {
+  size: A4;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f3f4f6;
+  color: #111;
+  line-height: 1.35;
+}
+
+.page {
+  width: 210mm;
+  min-height: 297mm;
+  margin: 0 auto;
+  background: white;
+}
+
+section {
+  padding: 16px 28px;
+}
+
+.hero {
+  background: #cc0000;
+  color: white;
+  text-align: center;
+  padding: 20px 28px;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 900;
+}
+
+.hero p {
+  margin-top: 4px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.problem-intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.problem ul,
+.result ul {
+  margin: 6px 0;
+  padding-left: 18px;
+}
+
+.problem li,
+.result li {
+  margin-bottom: 4px;
+  font-size: 14px;
+}
+
+.highlight {
+  color: #cc0000;
+  font-weight: bold;
+  margin-top: 6px;
+  font-size: 14px;
+}
+
+.blocks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  padding: 10px 28px;
+}
+
+.block h4 {
+  margin: 0 0 4px 0;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.block p {
+  font-size: 13px;
+  margin: 3px 0;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.result-cta {
+  background: #cc0000;
+  color: white;
+  padding: 18px 28px;
+}
+
+.result-cta h3 {
+  margin: 0 0 6px 0;
+  font-size: 16px;
+}
+
+.result-cta ul {
+  padding-left: 16px;
+  margin: 6px 0;
+  font-size: 13px;
+}
+
+.result-cta h2 {
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.seller {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+#print-btn button,
+.print-btn button {
+  padding: 8px 16px;
+  font-weight: bold;
+}
+
+@media print {
+  body { background: white; }
+  .no-print { display: none; }
+}

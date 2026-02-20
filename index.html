@@ -5,93 +5,116 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TOOLS Arbeidsklar</title>
 
-<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="styles.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-
-<style>
-@media print {
-  body { background: white; }
-  .no-print { display: none !important; }
-  .page { box-shadow: none; margin: 0; }
-}
-body {
-  background: #f1f5f9;
-}
-</style>
-
 </head>
-<body class="text-slate-800">
 
-<div class="page max-w-[900px] mx-auto bg-white my-10">
+<body>
+
+<div class="page">
 
     <!-- HERO -->
-    <section class="bg-red-600 text-white px-12 py-10 text-center">
-        <h1 class="text-4xl font-black tracking-tight">ARBEIDSKLAR</h1>
-        <p class="mt-3 text-lg">Arbeidstøy, vern og verktøy satt i system.</p>
+    <section class="hero">
+        <h1>ARBEIDSKLAR</h1>
+        <p>Full kontroll på utstyr. Mindre rot. Mer drift.</p>
     </section>
 
-    <!-- PROBLEM + SOLUTION -->
-    <section class="px-12 py-10 grid md:grid-cols-2 gap-10">
+    <!-- PROBLEM -->
+    <section class="problem">
+        <h2>Kjenner du deg igjen?</h2>
+        <ul>
+            <li>Ansatte får ulik hjelp i butikk</li>
+            <li>Feil produkter blir kjøpt</li>
+            <li>Dårlig oversikt over avtaler og priser</li>
+            <li>Unødvendig tidsbruk og frustrasjon ute på prosjekt</li>
+        </ul>
+        <div class="highlight">👉 Det koster mer enn du tror.</div>
+    </section>
 
-        <div>
-            <h2 class="text-2xl font-bold mb-4">Kjenner du deg igjen?</h2>
-            <ul class="space-y-3 text-base">
-                <li class="flex gap-3"><span class="text-red-600 font-bold">✕</span> Ulik praksis i butikk</li>
-                <li class="flex gap-3"><span class="text-red-600 font-bold">✕</span> Feilkjøp og avvik</li>
-                <li class="flex gap-3"><span class="text-red-600 font-bold">✕</span> Manglende oversikt over avtale og priser</li>
-                <li class="flex gap-3"><span class="text-red-600 font-bold">✕</span> Produksjon stopper fordi riktig utstyr mangler</li>
-            </ul>
+    <!-- LØSNING INTRO -->
+    <section class="intro">
+        <h3>🔧 Løsningen for bygg og anlegg</h3>
+        <p>Arbeidsklar gir deg kontroll på alt som trengs for å holde folk i arbeid – hver dag.</p>
+    </section>
 
-            <div class="mt-6 bg-red-50 border-l-4 border-red-600 p-3 font-bold text-red-600">
-                👉 Det koster mer enn du tror.
-            </div>
+    <!-- BLOKKER -->
+    <section class="blocks">
+
+        <div class="block">
+            <h4>Enklere prosesser</h4>
+            <p>
+                Vi vet hva som faktisk brukes ute på byggeplass.
+                Med riktig arbeidstøy, vern og verktøy fra start slipper dere feilkjøp, retur og stopp i arbeidet.
+            </p>
+            <p class="bold">👉 Mindre tid på administrasjon</p>
+            <p class="bold">👉 Mer tid på produksjon</p>
         </div>
 
-        <div class="bg-slate-900 text-white p-8 rounded-xl flex items-center">
-            <div>
-                <p class="uppercase text-xs text-red-500 font-bold tracking-widest">Løsningen</p>
-                <h3 class="text-xl font-bold mt-2 leading-snug">
-                    Én avtale. Én struktur. Én leverandør som tar ansvar.
-                </h3>
-            </div>
+        <div class="block">
+            <h4>Full styring på avtalen</h4>
+            <p>
+                Alle produkter, priser og retningslinjer er forhåndsdefinert og ligger klare i systemet.
+            </p>
+            <p>✔ Riktige varer blir kjøpt</p>
+            <p>✔ Avtalte priser blir fulgt</p>
+            <p>✔ Ingen avvik</p>
+        </div>
+
+        <div class="block">
+            <h4>Samme opplevelse overalt</h4>
+            <p>
+                Uansett hvilken butikk eller kontaktpunkt dere bruker, får dere samme hjelp og samme løsning.
+            </p>
+            <p class="bold">👉 Trygt</p>
+            <p class="bold">👉 Forutsigbart</p>
+            <p class="bold">👉 Effektivt</p>
+        </div>
+
+        <div class="block">
+            <h4>Digital kontroll + personlig oppfølging</h4>
+            <p>
+                Bestill enkelt på nett med full oversikt over sortiment og avtalevarer.
+                Samtidig har dere alltid tilgang på folk som kjenner dere og behovene deres.
+            </p>
         </div>
 
     </section>
 
-    <!-- BENEFITS -->
-    <section class="bg-slate-50 px-12 py-10 grid grid-cols-2 md:grid-cols-4 gap-6 text-center text-sm font-semibold">
-        <div class="bg-white p-4 border border-slate-200">✔ Mindre feilkjøp</div>
-        <div class="bg-white p-4 border border-slate-200">✔ Bedre HMS</div>
-        <div class="bg-white p-4 border border-slate-200">✔ Raskere håndtering</div>
-        <div class="bg-white p-4 border border-slate-200">✔ Enklere hverdag</div>
-    </section>
+    <!-- RESULTAT -->
+    <section class="result-cta">
 
-    <!-- CTA -->
-    <section class="bg-red-600 text-white px-12 py-10 text-center">
-        <h2 class="text-2xl font-black">ÉN AVTALE. ETT SYSTEM. FULL KONTROLL.</h2>
-        <p class="mt-3 text-base">La oss vise deg hvordan dette kan fungere hos dere.</p>
+<h3>Resultatet i praksis</h3>
 
-        <div class="mt-6">
-            <h3 id="sellerName" class="text-xl font-bold"></h3>
-            <p id="sellerPhone"></p>
-            <p id="sellerEmail"></p>
-        </div>
+<ul>
+  <li>Mindre feilkjøp og svinn</li>
+  <li>Bedre HMS og riktig utstyr</li>
+  <li>Raskere innkjøp</li>
+  <li>Enklere hverdag for prosjektleder og innkjøper</li>
+  <li>Ansatte som alltid er klare til jobb</li>
+</ul>
 
-        <div class="mt-6 flex justify-center">
-            <div id="qrcode"></div>
-        </div>
-    </section>
+<h2>ÉN AVTALE. ETT SYSTEM. FULL KONTROLL.</h2>
+
+<p>Arbeidsklar er laget for deg som vil ha flyt i hverdagen og kontroll på kostnadene.</p>
+
+<p>👉 Mindre kaos  👉 Mer kontroll  👉 Bedre drift</p>
+
+<div class="seller">
+  <h4 id="sellerName">Din lokale TOOLS-kontakt</h4>
+  <p id="sellerPhone"></p>
+  <p id="sellerEmail"></p>
+</div>
+
+<div id="qrcode"></div>
+
+</section>
 
 </div>
 
-<!-- PDF BUTTON -->
-<div class="text-center my-6 no-print">
-    <button onclick="window.print()" class="bg-slate-900 text-white px-6 py-3 rounded font-bold">
-        Last ned som PDF
-    </button>
+<div class="print-btn no-print">
+    <button onclick="window.print()">Last ned PDF</button>
 </div>
 
 <script src="script.js"></script>
-
 </body>
 </html>
