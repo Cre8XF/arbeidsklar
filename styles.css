@@ -12,19 +12,20 @@
   --tools-red-dark: #b00000;
   --tools-dark: #111111;
   --tools-card: #1a1a1a;
-  --text-light: #f5f5f5;
-  --text-muted: #cccccc;
+  --text-light: #ffffff;
+  --text-muted: rgba(255, 255, 255, 0.92);
 }
 
 body {
   margin: 0;
   font-family: "Inter", sans-serif;
   background: #2b2f33;
-  line-height: 1.45;
+  color: #ffffff;
+  line-height: 1.55;
 }
 
 .page {
-  max-width: 210mm;
+  max-width: 900px;
   width: 100%;
   margin: 0 auto;
   display: flex;
@@ -66,6 +67,7 @@ body {
   font-weight: 500;
   opacity: 0.95;
   margin: 0;
+  line-height: 1.55;
 }
 
 .hero::after {
@@ -135,12 +137,15 @@ section {
 .problem-col h2 {
   font-size: 20px;
   margin-bottom: 8px;
+  color: #ffffff;
+  letter-spacing: 0.4px;
 }
 
 .problem-col li {
   font-size: 13px;
   margin-bottom: 5px;
   color: var(--text-muted);
+  line-height: 1.6;
 }
 
 .intro-col {
@@ -152,11 +157,14 @@ section {
 .intro-col h3 {
   font-size: 16px;
   margin-bottom: 8px;
+  color: #ffffff;
+  letter-spacing: 0.4px;
 }
 
 .intro-col p {
   font-size: 13px;
   color: var(--text-muted);
+  line-height: 1.6;
 }
 /* ================= BLOKKER ================= */
 
@@ -167,7 +175,8 @@ section {
 }
 
 .block {
-  background: var(--tools-card);
+  background: rgba(255, 255, 255, 0.04);
+  color: #ffffff;
   padding: 12px 14px;
   border-left: 4px solid var(--tools-red);
   border-radius: 4px;
@@ -178,12 +187,15 @@ section {
   margin: 0 0 6px 0;
   font-size: 14px;
   font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 0.4px;
 }
 
 .block p {
   font-size: 12.5px;
   color: var(--text-muted);
   margin: 4px 0;
+  line-height: 1.6;
 }
 
 .bold {
@@ -221,6 +233,8 @@ section {
   font-size: 15px;
   margin-bottom: 8px;
   font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.4px;
 }
 
 .result-cta ul {
@@ -231,6 +245,7 @@ section {
 
 .result-cta li {
   margin-bottom: 5px;
+  color: var(--text-muted);
 }
 
 /* Main CTA heading */
@@ -239,12 +254,15 @@ section {
   font-size: 21px;
   margin: 12px 0 8px 0;
   font-weight: 900;
+  color: #ffffff;
   letter-spacing: 1px;
 }
 
 .result-cta p {
   font-size: 12.5px;
   margin-bottom: 6px;
+  color: var(--text-muted);
+  line-height: 1.6;
 }
 
 /* Layout */
@@ -353,7 +371,7 @@ html, body {
 
 /* ================= RESPONSIVE / MOBILE ================= */
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
 
   /* Tighter section padding on small screens */
   section {
