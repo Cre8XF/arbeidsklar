@@ -61,7 +61,7 @@ body {
   background-size: cover;
   background-position: center 40%;
   color: white;
-  padding: 22px 32px 18px 32px;
+  padding: 17px 32px 13px 32px;
   border-bottom: 3px solid rgba(255,255,255,0.08);
 }
 
@@ -187,14 +187,14 @@ body {
   flex-shrink: 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  padding: 12px 28px;
+  gap: 8px;
+  padding: 9px 28px;
   background: var(--tools-dark);
 }
 
 .block {
   background: var(--tools-card);
-  padding: 12px 14px;
+  padding: 10px 13px;
   border-left: 3px solid var(--tools-red);
   border-radius: 3px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.4);
@@ -253,15 +253,21 @@ body {
 /* ================= RESULTAT + CTA ================= */
 
 .result-cta {
-  flex-shrink: 0;
+  flex: 1;                /* absorbs all remaining space — eliminates black gap */
   display: grid;
   grid-template-columns: 1fr 1.5fr auto;
   gap: 20px;
-  align-items: start;
-  background: linear-gradient(135deg, var(--tools-red-dark) 0%, var(--tools-red) 100%);
+  align-items: center;   /* vertically centre content in the expanded area */
+  background: linear-gradient(
+    to bottom,
+    #7a0000 0%,
+    var(--tools-red-dark) 18%,
+    var(--tools-red) 65%,
+    #bf0000 100%
+  );
   color: white;
-  padding: 16px 28px;
-  border-top: 1px solid rgba(255,255,255,0.1);
+  padding: 20px 28px;
+  border-top: 1px solid rgba(255,255,255,0.10);
 }
 
 .result-col h3 {
@@ -368,25 +374,36 @@ body {
 
 .footer-brand {
   flex-shrink: 0;
-  margin-top: auto;
-  background: #0a0a0a;
-  border-top: 2px solid var(--tools-red);
+  background: #080808;
+  border-top: 1px solid rgba(212, 0, 0, 0.55);
   color: white;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 9px 32px;
+  padding: 6px 32px;
+  position: relative;
+}
+
+/* subtle gradient divider above footer */
+.footer-brand::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(212,0,0,0.7), transparent);
 }
 
 .tools-text-logo {
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 900;
-  letter-spacing: 5px;
+  letter-spacing: 6px;
   color: white;
 }
 
 .tools-url {
-  font-size: 11px;
+  font-size: 10.5px;
   color: var(--text-dim);
   margin: 0;
   letter-spacing: 0.5px;
