@@ -24,13 +24,12 @@ body {
 }
 
 .page {
-  width: 210mm;
-  height: 297mm;
+  max-width: 210mm;
+  width: 100%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   background: var(--tools-dark);
-  overflow: hidden;
 }
 
 /* ================= HERO ================= */
@@ -339,8 +338,65 @@ section {
   body { background: white; }
   .no-print { display: none !important; }
 
+  /* Restore exact A4 dimensions for print/PDF */
+  .page {
+    width: 210mm;
+    height: 297mm;
+    overflow: hidden;
+    max-width: none;
+  }
 }
 html, body {
   max-width: 100%;
   overflow-x: hidden;
+}
+
+/* ================= RESPONSIVE / MOBILE ================= */
+
+@media (max-width: 600px) {
+
+  /* Tighter section padding on small screens */
+  section {
+    padding: 12px 14px;
+  }
+
+  /* Problem/intro: collapse 2-col grid to 1-col */
+  .problem-intro {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 14px 14px;
+  }
+
+  /* Blocks: collapse 2-col grid to 1-col */
+  .blocks {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  /* CTA layout: stack text and QR vertically */
+  .cta-layout {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  /* CTA text: allow full width when stacked */
+  .cta-text {
+    max-width: 100%;
+  }
+
+  /* QR block: center it when stacked below text */
+  .cta-qr {
+    align-self: center;
+  }
+
+  /* Hero heading: slightly smaller on very narrow screens */
+  .hero h1 {
+    font-size: 24px;
+  }
+
+  /* Result/CTA heading: avoid overflow on narrow screens */
+  .result-cta h2 {
+    font-size: 17px;
+  }
 }
