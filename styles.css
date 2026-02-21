@@ -1,124 +1,230 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap');
+
 @page {
   size: A4;
   margin: 0;
 }
 
+:root {
+  --tools-red: #d40000;
+  --tools-red-dark: #b00000;
+  --tools-dark: #111111;
+  --tools-card: #1a1a1a;
+  --text-light: #f5f5f5;
+  --text-muted: #cccccc;
+}
+
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f3f4f6;
-  color: #111;
-  line-height: 1.35;
+  font-family: "Inter", sans-serif;
+  background: #2b2f33;
+  line-height: 1.45;
 }
 
 .page {
   width: 210mm;
-  min-height: 297mm;
+  height: 297mm;
   margin: 0 auto;
-  background: white;
+  display: flex;
+  flex-direction: column;
+  background: var(--tools-dark);
 }
 
-section {
-  padding: 16px 28px;
-}
+/* ================= HERO ================= */
 
 .hero {
-  background: #cc0000;
+  position: relative;
+  background-image:
+    linear-gradient(rgba(212,0,0,0.78), rgba(212,0,0,0.88)),
+    url("https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1600&q=80");
+  background-size: cover;
+  background-position: center;
   color: white;
   text-align: center;
-  padding: 20px 28px;
+  padding: 80px 26px 70px 26px;
 }
 
 .hero h1 {
   margin: 0;
-  font-size: 32px;
+  font-size: 52px;
   font-weight: 900;
+  letter-spacing: 2px;
+  text-shadow: 0 6px 12px rgba(0,0,0,0.4);
 }
 
 .hero p {
-  margin-top: 4px;
-  font-size: 16px;
-  font-weight: bold;
+  margin-top: 18px;
+  font-size: 22px;
+  font-weight: 600;
+  opacity: 0.95;
 }
 
-.problem-intro {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
+/* ================= MIDT ================= */
+
+section {
+  padding: 20px 32px;
 }
 
-.problem ul,
-.result ul {
-  margin: 6px 0;
-  padding-left: 18px;
+.problem,
+.intro,
+.blocks {
+  background: var(--tools-dark);
+  color: var(--text-light);
 }
 
-.problem li,
-.result li {
-  margin-bottom: 4px;
+.problem h2 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.problem li {
   font-size: 14px;
+  margin-bottom: 6px;
+  color: var(--text-muted);
 }
 
 .highlight {
-  color: #cc0000;
-  font-weight: bold;
-  margin-top: 6px;
-  font-size: 14px;
+  color: var(--tools-red);
+  font-weight: 800;
+  margin-top: 10px;
 }
+
+.intro h3 {
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+
+.intro p {
+  color: var(--text-muted);
+}
+
+/* ================= BLOKKER ================= */
 
 .blocks {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  padding: 10px 28px;
+  gap: 18px;
+}
+
+.block {
+  background: var(--tools-card);
+  padding: 16px;
+  border-left: 4px solid var(--tools-red);
+  border-radius: 4px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.35);
 }
 
 .block h4 {
-  margin: 0 0 4px 0;
-  font-size: 14px;
+  margin: 0 0 8px 0;
+  font-size: 15px;
   font-weight: 800;
 }
 
 .block p {
   font-size: 13px;
-  margin: 3px 0;
+  color: var(--text-muted);
+  margin: 4px 0;
 }
 
 .bold {
-  font-weight: bold;
+  color: white;
+  font-weight: 600;
 }
 
+/* ================= RESULTAT + CTA ================= */
+
 .result-cta {
-  background: #cc0000;
+  background:
+    linear-gradient(to bottom, var(--tools-red-dark), var(--tools-red));
   color: white;
-  padding: 18px 28px;
+  padding: 26px 32px;
 }
 
 .result-cta h3 {
-  margin: 0 0 6px 0;
   font-size: 16px;
+  margin-bottom: 6px;
 }
 
 .result-cta ul {
-  padding-left: 16px;
-  margin: 6px 0;
+  padding-left: 18px;
   font-size: 13px;
+  margin-bottom: 14px;
+}
+
+.result-cta li {
+  margin-bottom: 5px;
 }
 
 .result-cta h2 {
-  font-size: 18px;
+  font-size: 22px;
+  margin: 12px 0 8px 0;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.result-cta p {
+  font-size: 13px;
+}
+
+.cta-layout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
   margin-top: 10px;
 }
 
-.seller {
-  margin-top: 10px;
+.cta-text {
+  max-width: 65%;
+}
+
+.cta-qr canvas {
+  background: white;
+  padding: 6px;
+  width: 85px !important;
+  height: 85px !important;
+}
+
+.qr-label {
+  font-size: 11px;
+  margin-top: 6px;
+}
+
+/* ================= FOOTER ================= */
+
+.footer-brand {
+  background: var(--tools-red);
+  color: white;
+  text-align: center;
+  padding: 28px 0 26px 0;
+  margin-top: auto;
+}
+
+.tools-text-logo {
+  font-size: 48px;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+.tools-url {
   font-size: 14px;
+  margin-top: 6px;
 }
 
-#print-btn button,
+/* ================= PRINT ================= */
+
+.print-btn {
+  margin: 12px;
+  text-align: center;
+}
+
 .print-btn button {
-  padding: 8px 16px;
+  padding: 8px 14px;
   font-weight: bold;
+  background: black;
+  color: white;
+  border: none;
+  cursor: pointer;
 }
 
 @media print {

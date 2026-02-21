@@ -1,64 +1,64 @@
-(function () {
-  var params = new URLSearchParams(window.location.search);
-  var id = (params.get('id') || '').toLowerCase().trim();
+document.addEventListener("DOMContentLoaded", function () {
 
-  var sellerInfo = document.getElementById('sellerInfo');
-  var sellerFallback = document.getElementById('sellerFallback');
+  /* =========================
+     HENT SELGER FRA URL
+  ========================== */
 
-  function showFallback() {
-    sellerFallback.style.display = 'block';
+  const params = new URLSearchParams(window.location.search);
+  const id = (params.get("id") || "").toLowerCase().trim();
+
+  const nameEl = document.getElementById("sellerName");
+  const phoneEl = document.getElementById("sellerPhone");
+  const emailEl = document.getElementById("sellerEmail");
+  const sellerQR = document.getElementById("qrcode");
+
+  if (id) {
+    fetch("sellers.json")
+      .then(res => {
+        if (!res.ok) throw new Error("Kunne ikke laste sellers.json");
+        return res.json();
+      })
+      .then(sellers => {
+        const seller = sellers[id];
+
+        if (seller) {
+          nameEl.textContent = seller.name;
+          phoneEl.textContent = seller.phone;
+          emailEl.textContent = seller.email;
+
+          // QR som peker til denne selgerens side
+          if (sellerQR) {
+            new QRCode(sellerQR, {
+              text: window.location.href,
+              width: 110,
+              height: 110,
+              colorDark: "#000000",
+              colorLight: "#ffffff",
+              correctLevel: QRCode.CorrectLevel.M
+            });
+          }
+        }
+      })
+      .catch(err => {
+        console.warn("Seller ikke funnet:", err);
+      });
   }
 
-  function showSeller(seller) {
-    document.getElementById('sellerName').textContent = seller.name;
+  /* =========================
+     QR FOR TOOLS.NO (FOOTER)
+  ========================== */
 
-    var rawPhone = seller.phone;
-    var telPhone = rawPhone.replace(/\s/g, '');
+  const toolsQR = document.getElementById("toolsQR");
 
-    var phoneSpan = document.getElementById('sellerPhone');
-    phoneSpan.textContent = rawPhone;
-
-    var phoneLink = document.getElementById('sellerPhoneLink');
-    phoneLink.href = 'tel:' + telPhone;
-
-    var emailSpan = document.getElementById('sellerEmail');
-    emailSpan.textContent = seller.email;
-
-    var emailLink = document.getElementById('sellerEmailLink');
-    emailLink.href = 'mailto:' + seller.email;
-
-    sellerInfo.style.display = 'block';
-
-    // Generate QR code pointing to current URL (includes ?id=)
-    new QRCode(document.getElementById('qrcode'), {
-      text: window.location.href,
-      width: 120,
-      height: 120,
-      colorDark: '#0F172A',
-      colorLight: '#FFFFFF',
+  if (toolsQR) {
+    new QRCode(toolsQR, {
+      text: "https://www.tools.no",
+      width: 90,
+      height: 90,
+      colorDark: "#000000",
+      colorLight: "#ffffff",
       correctLevel: QRCode.CorrectLevel.M
     });
   }
 
-  if (!id) {
-    showFallback();
-    return;
-  }
-
-  fetch('sellers.json')
-    .then(function (res) {
-      if (!res.ok) throw new Error('Network response was not ok');
-      return res.json();
-    })
-    .then(function (sellers) {
-      var seller = sellers[id];
-      if (seller) {
-        showSeller(seller);
-      } else {
-        showFallback();
-      }
-    })
-    .catch(function () {
-      showFallback();
-    });
-})();
+});
