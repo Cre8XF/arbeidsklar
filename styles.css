@@ -338,4 +338,9 @@ section {
 @media print {
   body { background: white; }
   .no-print { display: none !important; }
+
+}
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
 }
