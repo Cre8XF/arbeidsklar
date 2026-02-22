@@ -418,3 +418,53 @@ html, body {
     font-size: 17px;
   }
 }
+/* ================= TEXT CLARITY BOOST ================= */
+
+:root {
+  --text-muted: rgba(255,255,255,0.96);
+}
+
+.problem li,
+.block p,
+.result-cta li,
+.result-cta p {
+  color: rgba(255,255,255,0.96);
+}
+
+.problem-col h2,
+.intro-col h3,
+.block h4,
+.result-cta h2,
+.result-cta h3 {
+  color: #ffffff;
+  letter-spacing: 0.5px;
+}
+
+/* ================= CTA IMAGE + GRADIENT ENHANCEMENT ================= */
+
+.result-cta {
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.72) 0%,
+      rgba(0,0,0,0.55) 25%,
+      rgba(0,0,0,0.45) 40%,
+      rgba(133, 25, 2, 0.40) 70%,
+      rgba(212,0,0,0.65) 100%
+    ),
+    url("banner.jpg");
+
+  background-size: cover;
+  background-position: center 60%;
+  background-repeat: no-repeat;
+}
+
+/* Slight image enhancement */
+.result-cta {
+  filter: saturate(108%) contrast(105%);
+}
+
+/* Optional subtle depth */
+.result-cta h2 {
+  text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+}
