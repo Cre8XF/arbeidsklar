@@ -468,3 +468,15 @@ html, body {
 .result-cta h2 {
   text-shadow: 0 2px 8px rgba(0,0,0,0.6);
 }
+.result-cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(255,255,255,0.05) 0%,
+    rgba(255,255,255,0.02) 35%,
+    rgba(0,0,0,0.15) 100%
+  );
+  pointer-events: none;
+}
